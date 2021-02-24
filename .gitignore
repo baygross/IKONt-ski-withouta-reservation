@@ -1,3 +1,4 @@
 Gemfile.lock
 selenium.log
 .DS_Store
+creds.rb # so no one accidentally shares passwords :)

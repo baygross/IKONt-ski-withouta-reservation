@@ -13,3 +13,4 @@ With original fork from https://github.com/coltonc3/shred-bot
 
 Now supports multiple users, multiple dates. Fixes some edge cases and tightens fail modes. 
 
+![Example output](demo.png?raw=true)

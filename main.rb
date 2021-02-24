@@ -110,6 +110,7 @@ def checkDates(dates)
     DRIVER.find_element(class: 'input').click # click confirmation checkbox
     sleep(1)
     confirm = WAIT.until{ DRIVER.find_element(xpath: '//*[@id="root"]/div/div/main/section[2]/div/div[2]/div[4]/div/div[5]/button/span') } # Confirm Reservations
+    sleep(2)
     confirm.click
     sleep(1)
     puts "✅ \treservation confirmed!"

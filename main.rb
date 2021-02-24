@@ -133,7 +133,7 @@ begin
   
   while !SKICREW.empty?
   
-    SKICREW.each_with_index |skier, skier_idx|
+    SKICREW.each_with_index do |skier, skier_idx|
       login(skier)
       checkDates(skier[:dates])
       logout

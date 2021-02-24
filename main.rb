@@ -21,7 +21,7 @@ end
 def login(skier)  
   # navigate to ikon account page
   DRIVER.get 'https://account.ikonpass.com/en/login'
-sleep(1)
+sleep(3)
   
   # ***** Login Page *****
   email_box = DRIVER.find_element(id: 'email')
@@ -34,7 +34,7 @@ sleep(1)
   # ***** Account Page *****
   # use an explicit wait to avoid 'no such element' error while loading account page
   res_button = WAIT.until{ DRIVER.find_element(xpath: '//*[@id="root"]/div/div/main/section[1]/div/div[1]/div/a') } # Make a Reservation
-  res_button.click  
+  res_button.click 
 
 
   # ***** Resort Selector Page *****
@@ -43,7 +43,7 @@ sleep(1)
   search_bar.send_keys(:arrow_down)
   search_bar.send_keys(:return)
   DRIVER.find_element(xpath: '//*[@id="root"]/div/div/main/section[2]/div/div[2]/div[2]/div[2]/button').click # Continue
-  sleep(2)
+  sleep(3)
   
   puts "🚠 \tLoaded up " + RESORT
   
@@ -66,10 +66,10 @@ def checkDates(dates)
     
     # ***** Date Selector Page *****
     available = false
-    sleep(1) # for some reason the explicit wait doesn't work here so use sleep
+    sleep(3) # for some reason the explicit wait doesn't work here so use sleep
     # all available dates are of the class DayPicker-Day so iterate through all of them until specified date is found
     day_picker = WAIT.until{ DRIVER.find_elements(class: 'DayPicker-Day') }
-    
+    sleep(3)
     # select date and check availability
     for day in day_picker
       if day.text.eql? target_day
@@ -108,11 +108,11 @@ def checkDates(dates)
   
     # ***** Confirmation Page *****
     DRIVER.find_element(class: 'input').click # click confirmation checkbox
-    sleep(1)
+    sleep(3)
     confirm = WAIT.until{ DRIVER.find_element(xpath: '//*[@id="root"]/div/div/main/section[2]/div/div[2]/div[4]/div/div[5]/button/span') } # Confirm Reservations
-    sleep(2)
+    sleep(3)
     confirm.click
-    sleep(1)
+    sleep(3)
     puts "✅ \treservation confirmed!"
     dates.delete_at(date_idx)
   

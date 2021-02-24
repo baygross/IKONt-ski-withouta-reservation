@@ -53,7 +53,7 @@ end
 
 def checkDates(dates)
   
-  for date, date_idx in dates 
+  dates.each_with_index do |date, date_idx| 
   
     target_month = date.split(" ")[0]
     target_day = date.split(" ")[1]
@@ -133,7 +133,7 @@ begin
   
   while !SKICREW.empty?
   
-    for skier, skier_idx in SKICREW
+    SKICREW.each_with_index |skier, skier_idx|
       login(skier)
       checkDates(skier[:dates])
       logout

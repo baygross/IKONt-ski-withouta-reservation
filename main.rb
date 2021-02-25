@@ -73,7 +73,7 @@ def checkDates(dates)
     # select date and check availability
     for day in day_picker
       if day.text.eql? target_day
-        day.click
+        day.click rescue next # sometimes this fails, unclear why, so just moving on to keep script alive
         
         # oh boy forgive me this is gnarly. have to check status of that day now
         x = DRIVER.find_element(xpath: "//h2[text() = 'No Reservations Available']") rescue nil
@@ -102,6 +102,7 @@ def checkDates(dates)
       puts "🤷‍♂️ \tsave button wasn't there idk gave up"
       next 
     end
+    sleep(3)
     continue = WAIT.until{ DRIVER.find_element(xpath: '//*[@id="root"]/div/div/main/section[2]/div/div[2]/div[3]/div[2]/button') } # Continue to Confirm
     continue.click
     
